@@ -129,8 +129,8 @@ GameObject:
   m_Component:
   - component: {fileID: 62254046}
   - component: {fileID: 62254045}
-  - component: {fileID: 62254048}
   - component: {fileID: 62254047}
+  - component: {fileID: 62254048}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -202,12 +202,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 62254044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5960a7b455e7496e8940a5c3c0f7b987, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a19c7c57e2c4b3e9766e8410dd022f1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ArcanaPrototype.CardView
-  titleText: {fileID: 0}
-  backgroundImage: {fileID: 0}
-  hoverScale: 1.1
+  m_EditorClassIdentifier: Assembly-CSharp::ArcanaPrototype.HandManager
+  cardPrefab: {fileID: 3637462112860010744, guid: 84943b2d276994ca8a3760a6d5d1f489, type: 3}
+  handContainer: {fileID: 852021062}
+  arcanaResolver: {fileID: 62254047}
+  maximumHandSize: 8
+  handMessageText: {fileID: 472008151}
 --- !u!1 &138723329
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,7 +1219,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 820530612}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 62254045}
+        m_TargetAssemblyTypeName: ArcanaPrototype.EnvironmentManager, Assembly-CSharp
+        m_MethodName: ChangeEnvironment
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &820530612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1423,7 +1437,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 827523731}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1049157831}
+        m_TargetAssemblyTypeName: ArcanaPrototype.EnemyActionPool, Assembly-CSharp
+        m_MethodName: TakeTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &827523731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,6 +1497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 852021062}
+  - component: {fileID: 852021063}
   m_Layer: 5
   m_Name: HandContainer
   m_TagString: Untagged
@@ -1497,6 +1524,32 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -20}
   m_SizeDelta: {x: -40, y: -70}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &852021063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852021061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 15
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &955679406
 GameObject:
   m_ObjectHideFlags: 0
@@ -2479,7 +2532,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2058588544}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 62254048}
+        m_TargetAssemblyTypeName: ArcanaPrototype.HandManager, Assembly-CSharp
+        m_MethodName: DrawCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2058588544
 MonoBehaviour:
   m_ObjectHideFlags: 0
