@@ -40,6 +40,12 @@ namespace ArcanaPrototype
 
         private void Start()
         {
+            ResetEnvironment();
+        }
+
+        public void ResetEnvironment()
+        {
+            currentEnvironmentIndex = 0;
             ShowCurrentEnvironment();
         }
 

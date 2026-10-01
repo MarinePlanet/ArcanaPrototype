@@ -35,6 +35,26 @@ namespace ArcanaPrototype
             return true;
         }
 
+        public void ResetResolver()
+        {
+            StopAllCoroutines();
+            isResolving = false;
+
+            if (playArea != null)
+            {
+                CardView[] cardsInPlay = playArea.GetComponentsInChildren<CardView>(true);
+                for (int i = 0; i < cardsInPlay.Length; i++)
+                {
+                    Destroy(cardsInPlay[i].gameObject);
+                }
+            }
+
+            if (resultText != null)
+            {
+                resultText.text = "Play an Arcana card";
+            }
+        }
+
         private IEnumerator ResolveCard(CardView card)
         {
             isResolving = true;

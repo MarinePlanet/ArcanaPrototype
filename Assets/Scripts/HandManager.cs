@@ -71,6 +71,21 @@ namespace ArcanaPrototype
             }
         }
 
+        public void ResetHand()
+        {
+            if (handContainer == null)
+            {
+                return;
+            }
+
+            for (int i = handContainer.childCount - 1; i >= 0; i--)
+            {
+                Destroy(handContainer.GetChild(i).gameObject);
+            }
+
+            SetHandMessage(string.Empty);
+        }
+
         private void SetHandMessage(string message)
         {
             if (handMessageText != null)

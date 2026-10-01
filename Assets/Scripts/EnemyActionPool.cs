@@ -33,7 +33,18 @@ namespace ArcanaPrototype
 
         private void Start()
         {
-            ResetPool();
+            ResetActionPool();
+        }
+
+        public void ResetActionPool()
+        {
+            for (int i = 0; i < actions.Count; i++)
+            {
+                actions[i].hasBeenUsed = false;
+            }
+
+            RefreshActionPoolText();
+
             if (actionPoolPanel != null)
             {
                 actionPoolPanel.SetActive(false);
@@ -55,7 +66,7 @@ namespace ArcanaPrototype
 
             if (AllActionsUsed())
             {
-                ResetPool();
+                ResetActionPool();
             }
 
             List<int> availableIndices = new List<int>();
@@ -102,16 +113,6 @@ namespace ArcanaPrototype
             }
 
             return true;
-        }
-
-        private void ResetPool()
-        {
-            for (int i = 0; i < actions.Count; i++)
-            {
-                actions[i].hasBeenUsed = false;
-            }
-
-            RefreshActionPoolText();
         }
 
         private void RefreshActionPoolText()
