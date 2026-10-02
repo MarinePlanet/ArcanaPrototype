@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a96a010a2445b496575fa6dc2d485a, type: 3}
+  m_Name: PlayerDeck
+  m_EditorClassIdentifier: Assembly-CSharp::ArcanaPrototype.DeckData
+  cards:
+  - {fileID: 11400000, guid: 379a33b89855c4fdea6d66c9628ddbc7, type: 2}
+  - {fileID: 11400000, guid: 379a33b89855c4fdea6d66c9628ddbc7, type: 2}
+  - {fileID: 11400000, guid: 379a33b89855c4fdea6d66c9628ddbc7, type: 2}
+  - {fileID: 11400000, guid: d0d670105bc144070ae4c5511fd9af20, type: 2}
+  - {fileID: 11400000, guid: d0d670105bc144070ae4c5511fd9af20, type: 2}
+  - {fileID: 11400000, guid: d0d670105bc144070ae4c5511fd9af20, type: 2}
+  - {fileID: 11400000, guid: f4755898780414440af6fa4654996331, type: 2}
+  - {fileID: 11400000, guid: f4755898780414440af6fa4654996331, type: 2}
+  - {fileID: 11400000, guid: f4755898780414440af6fa4654996331, type: 2}
+  - {fileID: 11400000, guid: ce93467f0e1d9470dbb7945ed2def4f7, type: 2}
+  - {fileID: 11400000, guid: ce93467f0e1d9470dbb7945ed2def4f7, type: 2}
+  - {fileID: 11400000, guid: ce93467f0e1d9470dbb7945ed2def4f7, type: 2}

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,17 +11,23 @@ namespace ArcanaPrototype
     {
         [Header("Card UI")]
         [SerializeField] private Text titleText;
+        [SerializeField] private Text costText;
+        [SerializeField] private Text typeText;
         [SerializeField] private Image backgroundImage;
 
         [Header("Hover")]
         [SerializeField, Min(1f)] private float hoverScale = 1.1f;
 
-        private HandManager handManager;
+        private Action<CardView> clickHandler;
+        private CardTooltip tooltip;
         private RectTransform rectTransform;
         private Vector3 normalScale = Vector3.one;
         private bool canInteract = true;
 
-        public string CardName { get; private set; }
+        public CardInstance CardInstance { get; private set; }
+        public string CardName => CardInstance != null && CardInstance.Data != null
+            ? CardInstance.Data.CardName
+            : string.Empty;
 
         private void Awake()
         {
@@ -28,20 +35,33 @@ namespace ArcanaPrototype
             normalScale = rectTransform.localScale;
         }
 
-        public void Initialize(string cardName, Color cardColor, HandManager owner)
+        public void Initialize(CardInstance cardInstance, Action<CardView> onClicked, CardTooltip cardTooltip)
         {
-            CardName = cardName;
-            handManager = owner;
+            CardInstance = cardInstance;
+            clickHandler = onClicked;
+            tooltip = cardTooltip;
             canInteract = true;
+
+            CardData data = cardInstance != null ? cardInstance.Data : null;
 
             if (titleText != null)
             {
-                titleText.text = cardName;
+                titleText.text = data != null ? data.CardName : "Missing Card";
+            }
+
+            if (costText != null)
+            {
+                costText.text = data != null ? data.Cost.ToString() : "-";
+            }
+
+            if (typeText != null)
+            {
+                typeText.text = data != null ? data.CardType.ToString().ToUpperInvariant() : string.Empty;
             }
 
             if (backgroundImage != null)
             {
-                backgroundImage.color = cardColor;
+                backgroundImage.color = data != null ? data.CardColor : Color.gray;
             }
 
             rectTransform.localEulerAngles = Vector3.zero;
@@ -53,19 +73,21 @@ namespace ArcanaPrototype
             if (canInteract)
             {
                 rectTransform.localScale = normalScale * hoverScale;
+                tooltip?.Show(CardInstance != null ? CardInstance.Data : null, rectTransform);
             }
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             rectTransform.localScale = normalScale;
+            tooltip?.Hide();
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (canInteract && eventData.button == PointerEventData.InputButton.Left && handManager != null)
+            if (canInteract && eventData.button == PointerEventData.InputButton.Left && clickHandler != null)
             {
-                handManager.TryPlayCard(this);
+                clickHandler(this);
             }
         }
 
@@ -73,6 +95,10 @@ namespace ArcanaPrototype
         {
             canInteract = enabled;
             rectTransform.localScale = normalScale;
+            if (!enabled)
+            {
+                tooltip?.Hide();
+            }
         }
 
         public void ShowOrientation(bool isReversed)
@@ -80,6 +106,11 @@ namespace ArcanaPrototype
             rectTransform.localEulerAngles = isReversed
                 ? new Vector3(0f, 0f, 180f)
                 : Vector3.zero;
+        }
+
+        private void OnDisable()
+        {
+            tooltip?.Hide();
         }
     }
 }

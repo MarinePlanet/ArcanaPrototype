@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47750c59aaa47f590b704acbf999342, type: 3}
+  m_Name: ApplyDelayedHeal20ToEnemy
+  m_EditorClassIdentifier: Assembly-CSharp::ArcanaPrototype.ApplyStatusEffect
+  status: {fileID: 11400000, guid: 75fe9a17b69d04ef4a50944eeba29752, type: 2}
+  target: 1
+  duration: 2

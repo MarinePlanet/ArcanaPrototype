@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdf7eedd6344dabb903bb5554863516, type: 3}
+  m_Name: TheChariot
+  m_EditorClassIdentifier: Assembly-CSharp::ArcanaPrototype.CardData
+  cardName: The Chariot
+  cardType: 0
+  cost: 3
+  cardColor: {r: 0.9339623, g: 0.4832552, b: 0.110137045, a: 1}
+  uprightProbability: 0.7
+  uprightDescription: Deal 20 damage to the enemy.
+  uprightEffects:
+  - {fileID: 11400000, guid: caee410e0ac6d4a3ebe09cd5198c40d3, type: 2}
+  reversedProbability: 0.3
+  reversedDescription: Deal 40 damage to the enemy and 20 damage to yourself.
+  reversedEffects:
+  - {fileID: 11400000, guid: 1d3325b4c620646e4b49461c8cd68646, type: 2}
+  - {fileID: 11400000, guid: 714350131a9fa4675b7c81d526fa4439, type: 2}

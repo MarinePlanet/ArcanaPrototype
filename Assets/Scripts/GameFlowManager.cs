@@ -24,6 +24,11 @@ namespace ArcanaPrototype
         [SerializeField] private ArcanaResolver arcanaResolver;
         [SerializeField] private EnemyActionPool enemyActionPool;
         [SerializeField] private EnvironmentManager environmentManager;
+        [SerializeField] private DeckManager deckManager;
+        [SerializeField] private PlayerResource playerResource;
+        [SerializeField] private BattleTurnManager battleTurnManager;
+        [SerializeField] private StatusManager playerStatusManager;
+        [SerializeField] private StatusManager enemyStatusManager;
 
         private bool isBattleActive;
 
@@ -62,7 +67,9 @@ namespace ArcanaPrototype
         {
             ShowOnlyBattleUI();
             ResetBattle();
+            deckManager?.InitializeBattleDeck();
             isBattleActive = true;
+            battleTurnManager?.StartBattle();
         }
 
         public void ShowDeckView()
@@ -162,6 +169,11 @@ namespace ArcanaPrototype
             {
                 handManager.ResetHand();
             }
+
+            deckManager?.ClearBattleState();
+            playerStatusManager?.ClearStatuses();
+            enemyStatusManager?.ClearStatuses();
+            playerResource?.ResetResource();
 
             if (enemyActionPool != null)
             {

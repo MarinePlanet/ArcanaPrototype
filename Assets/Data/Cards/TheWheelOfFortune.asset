@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdf7eedd6344dabb903bb5554863516, type: 3}
+  m_Name: TheWheelOfFortune
+  m_EditorClassIdentifier: Assembly-CSharp::ArcanaPrototype.CardData
+  cardName: The Wheel Of Fortune
+  cardType: 1
+  cost: 1
+  cardColor: {r: 0.55602527, g: 0.990566, b: 0.7256372, a: 1}
+  uprightProbability: 0.8
+  uprightDescription: Randomly change to a different Environment.
+  uprightEffects:
+  - {fileID: 11400000, guid: 12acbdf20d604412f8626f54eefa594e, type: 2}
+  reversedProbability: 0.2
+  reversedDescription: Randomly change the Environment, then add a copy of this card
+    to your hand.
+  reversedEffects:
+  - {fileID: 11400000, guid: 12acbdf20d604412f8626f54eefa594e, type: 2}
+  - {fileID: 11400000, guid: 0bdda49190f72477fad86df865b40bc7, type: 2}

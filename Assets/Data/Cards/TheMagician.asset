@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdf7eedd6344dabb903bb5554863516, type: 3}
+  m_Name: TheMagician
+  m_EditorClassIdentifier: Assembly-CSharp::ArcanaPrototype.CardData
+  cardName: The Magician
+  cardType: 1
+  cost: 1
+  cardColor: {r: 0.22459061, g: 0.6089241, b: 0.9716981, a: 1}
+  uprightProbability: 0.8
+  uprightDescription: Draw 2 cards.
+  uprightEffects:
+  - {fileID: 11400000, guid: 5a542b4c631144496bc1651f94877891, type: 2}
+  reversedProbability: 0.5
+  reversedDescription: Draw 4 cards, then randomly discard 1 card.
+  reversedEffects:
+  - {fileID: 11400000, guid: de12e870731804d4a9fc16154730f1b2, type: 2}
+  - {fileID: 11400000, guid: 12ca899cb8b6e44e8abb2279633396d9, type: 2}

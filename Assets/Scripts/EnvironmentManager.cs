@@ -1,42 +1,21 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace ArcanaPrototype
 {
-    [Serializable]
-    public class EnvironmentCondition
-    {
-        public string environmentName;
-        [TextArea] public string description;
-    }
-
     [DisallowMultipleComponent]
     public class EnvironmentManager : MonoBehaviour
     {
         [SerializeField] private Text environmentNameText;
         [SerializeField] private Text environmentDescriptionText;
-        [SerializeField] private List<EnvironmentCondition> environments = new List<EnvironmentCondition>
-        {
-            new EnvironmentCondition
-            {
-                environmentName = "Full Moon",
-                description = "Global Effect: Reversed Arcana are stronger."
-            },
-            new EnvironmentCondition
-            {
-                environmentName = "Solar Flare",
-                description = "Global Effect: Upright Arcana glow with energy."
-            },
-            new EnvironmentCondition
-            {
-                environmentName = "Twilight Fog",
-                description = "Global Effect: Orientation is harder to predict."
-            }
-        };
+        [SerializeField] private List<EnvironmentData> environments = new List<EnvironmentData>();
 
         private int currentEnvironmentIndex;
+
+        public EnvironmentData CurrentEnvironment => environments.Count > 0
+            ? environments[currentEnvironmentIndex]
+            : null;
 
         private void Start()
         {
@@ -60,6 +39,19 @@ namespace ArcanaPrototype
             ShowCurrentEnvironment();
         }
 
+        public bool ChangeToRandomDifferentEnvironment()
+        {
+            if (environments.Count <= 1)
+            {
+                return false;
+            }
+
+            int offset = Random.Range(1, environments.Count);
+            currentEnvironmentIndex = (currentEnvironmentIndex + offset) % environments.Count;
+            ShowCurrentEnvironment();
+            return true;
+        }
+
         private void ShowCurrentEnvironment()
         {
             if (environments.Count == 0)
@@ -69,15 +61,22 @@ namespace ArcanaPrototype
                 return;
             }
 
-            EnvironmentCondition condition = environments[currentEnvironmentIndex];
+            EnvironmentData condition = environments[currentEnvironmentIndex];
+            if (condition == null)
+            {
+                if (environmentNameText != null) environmentNameText.text = "Environment: Missing Data";
+                if (environmentDescriptionText != null) environmentDescriptionText.text = "Assign an EnvironmentData asset.";
+                return;
+            }
+
             if (environmentNameText != null)
             {
-                environmentNameText.text = "Environment: " + condition.environmentName;
+                environmentNameText.text = "Environment: " + condition.EnvironmentName;
             }
 
             if (environmentDescriptionText != null)
             {
-                environmentDescriptionText.text = condition.description;
+                environmentDescriptionText.text = condition.Description;
             }
         }
     }
